@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as EmailRouteImport } from './routes/email'
 import { Route as PlannerRouteImport } from './routes/planner'
 import { Route as TasksRouteImport } from './routes/tasks'
+import { Route as WeeklyRouteImport } from './routes/weekly'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +35,25 @@ const TasksRoute = TasksRouteImport.update({
   path: '/tasks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WeeklyRoute = WeeklyRouteImport.update({
+  id: '/weekly',
+  path: '/weekly',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/email': typeof EmailRoute
   '/planner': typeof PlannerRoute
   '/tasks': typeof TasksRoute
+  '/weekly': typeof WeeklyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/email': typeof EmailRoute
   '/planner': typeof PlannerRoute
   '/tasks': typeof TasksRoute
+  '/weekly': typeof WeeklyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,14 @@ export interface FileRoutesById {
   '/email': typeof EmailRoute
   '/planner': typeof PlannerRoute
   '/tasks': typeof TasksRoute
+  '/weekly': typeof WeeklyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/email' | '/planner' | '/tasks'
+  fullPaths: '/' | '/email' | '/planner' | '/tasks' | '/weekly'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/email' | '/planner' | '/tasks'
-  id: '__root__' | '/' | '/email' | '/planner' | '/tasks'
+  to: '/' | '/email' | '/planner' | '/tasks' | '/weekly'
+  id: '__root__' | '/' | '/email' | '/planner' | '/tasks' | '/weekly'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +76,7 @@ export interface RootRouteChildren {
   EmailRoute: typeof EmailRoute
   PlannerRoute: typeof PlannerRoute
   TasksRoute: typeof TasksRoute
+  WeeklyRoute: typeof WeeklyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +109,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TasksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/weekly': {
+      id: '/weekly'
+      path: '/weekly'
+      fullPath: '/weekly'
+      preLoaderRoute: typeof WeeklyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +124,7 @@ const rootRouteChildren: RootRouteChildren = {
   EmailRoute: EmailRoute,
   PlannerRoute: PlannerRoute,
   TasksRoute: TasksRoute,
+  WeeklyRoute: WeeklyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

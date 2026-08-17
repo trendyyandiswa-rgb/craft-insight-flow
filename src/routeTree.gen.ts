@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as EmailRouteImport } from './routes/email'
 import { Route as PlannerRouteImport } from './routes/planner'
+import { Route as ResearchRouteImport } from './routes/research'
 import { Route as TasksRouteImport } from './routes/tasks'
 import { Route as WeeklyRouteImport } from './routes/weekly'
 
@@ -30,6 +31,11 @@ const PlannerRoute = PlannerRouteImport.update({
   path: '/planner',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResearchRoute = ResearchRouteImport.update({
+  id: '/research',
+  path: '/research',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TasksRoute = TasksRouteImport.update({
   id: '/tasks',
   path: '/tasks',
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/email': typeof EmailRoute
   '/planner': typeof PlannerRoute
+  '/research': typeof ResearchRoute
   '/tasks': typeof TasksRoute
   '/weekly': typeof WeeklyRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/email': typeof EmailRoute
   '/planner': typeof PlannerRoute
+  '/research': typeof ResearchRoute
   '/tasks': typeof TasksRoute
   '/weekly': typeof WeeklyRoute
 }
@@ -60,21 +68,30 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/email': typeof EmailRoute
   '/planner': typeof PlannerRoute
+  '/research': typeof ResearchRoute
   '/tasks': typeof TasksRoute
   '/weekly': typeof WeeklyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/email' | '/planner' | '/tasks' | '/weekly'
+  fullPaths: '/' | '/email' | '/planner' | '/research' | '/tasks' | '/weekly'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/email' | '/planner' | '/tasks' | '/weekly'
-  id: '__root__' | '/' | '/email' | '/planner' | '/tasks' | '/weekly'
+  to: '/' | '/email' | '/planner' | '/research' | '/tasks' | '/weekly'
+  id:
+    | '__root__'
+    | '/'
+    | '/email'
+    | '/planner'
+    | '/research'
+    | '/tasks'
+    | '/weekly'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EmailRoute: typeof EmailRoute
   PlannerRoute: typeof PlannerRoute
+  ResearchRoute: typeof ResearchRoute
   TasksRoute: typeof TasksRoute
   WeeklyRoute: typeof WeeklyRoute
 }
@@ -102,6 +119,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlannerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/research': {
+      id: '/research'
+      path: '/research'
+      fullPath: '/research'
+      preLoaderRoute: typeof ResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tasks': {
       id: '/tasks'
       path: '/tasks'
@@ -123,6 +147,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EmailRoute: EmailRoute,
   PlannerRoute: PlannerRoute,
+  ResearchRoute: ResearchRoute,
   TasksRoute: TasksRoute,
   WeeklyRoute: WeeklyRoute,
 }

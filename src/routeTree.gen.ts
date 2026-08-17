@@ -17,6 +17,7 @@ import { Route as PlannerRouteImport } from './routes/planner'
 import { Route as ResearchRouteImport } from './routes/research'
 import { Route as SavedEmailsRouteImport } from './routes/saved-emails'
 import { Route as SavedResearchRouteImport } from './routes/saved-research'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as TasksRouteImport } from './routes/tasks'
 import { Route as WeeklyRouteImport } from './routes/weekly'
 
@@ -60,6 +61,11 @@ const SavedResearchRoute = SavedResearchRouteImport.update({
   path: '/saved-research',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TasksRoute = TasksRouteImport.update({
   id: '/tasks',
   path: '/tasks',
@@ -80,6 +86,7 @@ export interface FileRoutesByFullPath {
   '/research': typeof ResearchRoute
   '/saved-emails': typeof SavedEmailsRoute
   '/saved-research': typeof SavedResearchRoute
+  '/settings': typeof SettingsRoute
   '/tasks': typeof TasksRoute
   '/weekly': typeof WeeklyRoute
 }
@@ -92,6 +99,7 @@ export interface FileRoutesByTo {
   '/research': typeof ResearchRoute
   '/saved-emails': typeof SavedEmailsRoute
   '/saved-research': typeof SavedResearchRoute
+  '/settings': typeof SettingsRoute
   '/tasks': typeof TasksRoute
   '/weekly': typeof WeeklyRoute
 }
@@ -105,6 +113,7 @@ export interface FileRoutesById {
   '/research': typeof ResearchRoute
   '/saved-emails': typeof SavedEmailsRoute
   '/saved-research': typeof SavedResearchRoute
+  '/settings': typeof SettingsRoute
   '/tasks': typeof TasksRoute
   '/weekly': typeof WeeklyRoute
 }
@@ -119,6 +128,7 @@ export interface FileRouteTypes {
     | '/research'
     | '/saved-emails'
     | '/saved-research'
+    | '/settings'
     | '/tasks'
     | '/weekly'
   fileRoutesByTo: FileRoutesByTo
@@ -131,6 +141,7 @@ export interface FileRouteTypes {
     | '/research'
     | '/saved-emails'
     | '/saved-research'
+    | '/settings'
     | '/tasks'
     | '/weekly'
   id:
@@ -143,6 +154,7 @@ export interface FileRouteTypes {
     | '/research'
     | '/saved-emails'
     | '/saved-research'
+    | '/settings'
     | '/tasks'
     | '/weekly'
   fileRoutesById: FileRoutesById
@@ -156,6 +168,7 @@ export interface RootRouteChildren {
   ResearchRoute: typeof ResearchRoute
   SavedEmailsRoute: typeof SavedEmailsRoute
   SavedResearchRoute: typeof SavedResearchRoute
+  SettingsRoute: typeof SettingsRoute
   TasksRoute: typeof TasksRoute
   WeeklyRoute: typeof WeeklyRoute
 }
@@ -218,6 +231,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SavedResearchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tasks': {
       id: '/tasks'
       path: '/tasks'
@@ -244,6 +264,7 @@ const rootRouteChildren: RootRouteChildren = {
   ResearchRoute: ResearchRoute,
   SavedEmailsRoute: SavedEmailsRoute,
   SavedResearchRoute: SavedResearchRoute,
+  SettingsRoute: SettingsRoute,
   TasksRoute: TasksRoute,
   WeeklyRoute: WeeklyRoute,
 }

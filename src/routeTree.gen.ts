@@ -14,6 +14,7 @@ import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as EmailRouteImport } from './routes/email'
 import { Route as PlannerRouteImport } from './routes/planner'
 import { Route as ResearchRouteImport } from './routes/research'
+import { Route as SavedEmailsRouteImport } from './routes/saved-emails'
 import { Route as TasksRouteImport } from './routes/tasks'
 import { Route as WeeklyRouteImport } from './routes/weekly'
 
@@ -42,6 +43,11 @@ const ResearchRoute = ResearchRouteImport.update({
   path: '/research',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SavedEmailsRoute = SavedEmailsRouteImport.update({
+  id: '/saved-emails',
+  path: '/saved-emails',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TasksRoute = TasksRouteImport.update({
   id: '/tasks',
   path: '/tasks',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/email': typeof EmailRoute
   '/planner': typeof PlannerRoute
   '/research': typeof ResearchRoute
+  '/saved-emails': typeof SavedEmailsRoute
   '/tasks': typeof TasksRoute
   '/weekly': typeof WeeklyRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/email': typeof EmailRoute
   '/planner': typeof PlannerRoute
   '/research': typeof ResearchRoute
+  '/saved-emails': typeof SavedEmailsRoute
   '/tasks': typeof TasksRoute
   '/weekly': typeof WeeklyRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/email': typeof EmailRoute
   '/planner': typeof PlannerRoute
   '/research': typeof ResearchRoute
+  '/saved-emails': typeof SavedEmailsRoute
   '/tasks': typeof TasksRoute
   '/weekly': typeof WeeklyRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/email'
     | '/planner'
     | '/research'
+    | '/saved-emails'
     | '/tasks'
     | '/weekly'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/email'
     | '/planner'
     | '/research'
+    | '/saved-emails'
     | '/tasks'
     | '/weekly'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/email'
     | '/planner'
     | '/research'
+    | '/saved-emails'
     | '/tasks'
     | '/weekly'
   fileRoutesById: FileRoutesById
@@ -117,6 +129,7 @@ export interface RootRouteChildren {
   EmailRoute: typeof EmailRoute
   PlannerRoute: typeof PlannerRoute
   ResearchRoute: typeof ResearchRoute
+  SavedEmailsRoute: typeof SavedEmailsRoute
   TasksRoute: typeof TasksRoute
   WeeklyRoute: typeof WeeklyRoute
 }
@@ -158,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResearchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/saved-emails': {
+      id: '/saved-emails'
+      path: '/saved-emails'
+      fullPath: '/saved-emails'
+      preLoaderRoute: typeof SavedEmailsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tasks': {
       id: '/tasks'
       path: '/tasks'
@@ -181,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   EmailRoute: EmailRoute,
   PlannerRoute: PlannerRoute,
   ResearchRoute: ResearchRoute,
+  SavedEmailsRoute: SavedEmailsRoute,
   TasksRoute: TasksRoute,
   WeeklyRoute: WeeklyRoute,
 }

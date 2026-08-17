@@ -10,33 +10,167 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AnalyticsRouteImport } from './routes/analytics'
+import { Route as CalendarRouteImport } from './routes/calendar'
+import { Route as EmailRouteImport } from './routes/email'
+import { Route as PlannerRouteImport } from './routes/planner'
+import { Route as ResearchRouteImport } from './routes/research'
+import { Route as SavedEmailsRouteImport } from './routes/saved-emails'
+import { Route as SavedResearchRouteImport } from './routes/saved-research'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as TasksRouteImport } from './routes/tasks'
+import { Route as WeeklyRouteImport } from './routes/weekly'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AnalyticsRoute = AnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalendarRoute = CalendarRouteImport.update({
+  id: '/calendar',
+  path: '/calendar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmailRoute = EmailRouteImport.update({
+  id: '/email',
+  path: '/email',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlannerRoute = PlannerRouteImport.update({
+  id: '/planner',
+  path: '/planner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearchRoute = ResearchRouteImport.update({
+  id: '/research',
+  path: '/research',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SavedEmailsRoute = SavedEmailsRouteImport.update({
+  id: '/saved-emails',
+  path: '/saved-emails',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SavedResearchRoute = SavedResearchRouteImport.update({
+  id: '/saved-research',
+  path: '/saved-research',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TasksRoute = TasksRouteImport.update({
+  id: '/tasks',
+  path: '/tasks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WeeklyRoute = WeeklyRouteImport.update({
+  id: '/weekly',
+  path: '/weekly',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/calendar': typeof CalendarRoute
+  '/email': typeof EmailRoute
+  '/planner': typeof PlannerRoute
+  '/research': typeof ResearchRoute
+  '/saved-emails': typeof SavedEmailsRoute
+  '/saved-research': typeof SavedResearchRoute
+  '/settings': typeof SettingsRoute
+  '/tasks': typeof TasksRoute
+  '/weekly': typeof WeeklyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/calendar': typeof CalendarRoute
+  '/email': typeof EmailRoute
+  '/planner': typeof PlannerRoute
+  '/research': typeof ResearchRoute
+  '/saved-emails': typeof SavedEmailsRoute
+  '/saved-research': typeof SavedResearchRoute
+  '/settings': typeof SettingsRoute
+  '/tasks': typeof TasksRoute
+  '/weekly': typeof WeeklyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/analytics': typeof AnalyticsRoute
+  '/calendar': typeof CalendarRoute
+  '/email': typeof EmailRoute
+  '/planner': typeof PlannerRoute
+  '/research': typeof ResearchRoute
+  '/saved-emails': typeof SavedEmailsRoute
+  '/saved-research': typeof SavedResearchRoute
+  '/settings': typeof SettingsRoute
+  '/tasks': typeof TasksRoute
+  '/weekly': typeof WeeklyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/analytics'
+    | '/calendar'
+    | '/email'
+    | '/planner'
+    | '/research'
+    | '/saved-emails'
+    | '/saved-research'
+    | '/settings'
+    | '/tasks'
+    | '/weekly'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/analytics'
+    | '/calendar'
+    | '/email'
+    | '/planner'
+    | '/research'
+    | '/saved-emails'
+    | '/saved-research'
+    | '/settings'
+    | '/tasks'
+    | '/weekly'
+  id:
+    | '__root__'
+    | '/'
+    | '/analytics'
+    | '/calendar'
+    | '/email'
+    | '/planner'
+    | '/research'
+    | '/saved-emails'
+    | '/saved-research'
+    | '/settings'
+    | '/tasks'
+    | '/weekly'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AnalyticsRoute: typeof AnalyticsRoute
+  CalendarRoute: typeof CalendarRoute
+  EmailRoute: typeof EmailRoute
+  PlannerRoute: typeof PlannerRoute
+  ResearchRoute: typeof ResearchRoute
+  SavedEmailsRoute: typeof SavedEmailsRoute
+  SavedResearchRoute: typeof SavedResearchRoute
+  SettingsRoute: typeof SettingsRoute
+  TasksRoute: typeof TasksRoute
+  WeeklyRoute: typeof WeeklyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +182,91 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/analytics': {
+      id: '/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calendar': {
+      id: '/calendar'
+      path: '/calendar'
+      fullPath: '/calendar'
+      preLoaderRoute: typeof CalendarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/email': {
+      id: '/email'
+      path: '/email'
+      fullPath: '/email'
+      preLoaderRoute: typeof EmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/planner': {
+      id: '/planner'
+      path: '/planner'
+      fullPath: '/planner'
+      preLoaderRoute: typeof PlannerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research': {
+      id: '/research'
+      path: '/research'
+      fullPath: '/research'
+      preLoaderRoute: typeof ResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/saved-emails': {
+      id: '/saved-emails'
+      path: '/saved-emails'
+      fullPath: '/saved-emails'
+      preLoaderRoute: typeof SavedEmailsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/saved-research': {
+      id: '/saved-research'
+      path: '/saved-research'
+      fullPath: '/saved-research'
+      preLoaderRoute: typeof SavedResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tasks': {
+      id: '/tasks'
+      path: '/tasks'
+      fullPath: '/tasks'
+      preLoaderRoute: typeof TasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/weekly': {
+      id: '/weekly'
+      path: '/weekly'
+      fullPath: '/weekly'
+      preLoaderRoute: typeof WeeklyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AnalyticsRoute: AnalyticsRoute,
+  CalendarRoute: CalendarRoute,
+  EmailRoute: EmailRoute,
+  PlannerRoute: PlannerRoute,
+  ResearchRoute: ResearchRoute,
+  SavedEmailsRoute: SavedEmailsRoute,
+  SavedResearchRoute: SavedResearchRoute,
+  SettingsRoute: SettingsRoute,
+  TasksRoute: TasksRoute,
+  WeeklyRoute: WeeklyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
